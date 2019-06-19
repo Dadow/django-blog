@@ -1,0 +1,10 @@
+body {
+    background-color: black;
+    color: white;
+}
+input, textarea{
+    color: black !important;
+}
+.active {
+    color: orange;
+}

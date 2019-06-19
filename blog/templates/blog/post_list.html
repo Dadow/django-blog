@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+Los articulos
+{% endblock %}
+
+
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock %}
+    
+
+{% block content %}
+{% for post in PostVars %}
+<div>
+    {% if post.published_date %}
+    <div class="date">
+        {{ post.published_date }}
+    </div>
+    {% endif %}
+    <h3>{{post.title}}</h3>
+    <p>{{post.text|truncatechars:200|safe|linebreaksbr}}</p>
+    <h4>Autor: {{post.author.username}}</h4>
+    <a class="btn btn-default" href="{% url 'post_detail' pk=post.pk %}"><span class="glyphicon glyphicon-search"></span> Leer Más</a>
+    <hr>
+</div>
+{% endfor %}
+
+{% endblock %}
